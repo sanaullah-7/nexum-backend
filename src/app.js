@@ -23,10 +23,19 @@ app.use(morgan("dev"));
 app.use(express.json());
 
 const corsOrigin = process.env.CORS_ORIGIN;
+const defaultCorsOrigins = [
+  "https://nexum-erp-frontend.vercel.app",
+  "http://localhost:5173",
+  "http://localhost:3000",
+];
 const resolvedCorsOrigin = (() => {
   if (!corsOrigin) return true;
   if (corsOrigin.trim() === "*") return true;
-  return corsOrigin.split(",").map((s) => s.trim());
+  const envOrigins = corsOrigin
+    .split(",")
+    .map((s) => s.trim())
+    .filter(Boolean);
+  return Array.from(new Set([...envOrigins, ...defaultCorsOrigins]));
 })();
 app.use(
   cors({
