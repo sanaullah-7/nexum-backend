@@ -16,7 +16,7 @@ function requireAuth(req, res, next) {
 
     const secret = process.env.JWT_SECRET;
     if (!secret) {
-      return res.status(500).json({ ok: false, error: 'Server misconfigured' });
+      return res.status(500).json({ ok: false, error: 'Missing JWT_SECRET' });
     }
 
     const payload = jwt.verify(token, secret);
