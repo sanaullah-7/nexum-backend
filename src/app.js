@@ -25,6 +25,7 @@ app.use(express.json());
 const corsOrigin = process.env.CORS_ORIGIN;
 const defaultCorsOrigins = [
   "https://nexum-erp-frontend.vercel.app",
+  "https://erp.nexumtechnologies.com",
   "http://localhost:5173",
   "http://localhost:3000",
 ];
