@@ -6,6 +6,7 @@ const dotenv = require("dotenv");
 const app = require("./src/app");
 const { connectDb } = require("./src/config/db");
 
+
 dotenv.config();
 
 if (process.env.DNS_SERVERS) {
